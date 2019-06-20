@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using QlyNhaTro.Models
+@model IEnumerable<BaiDang>
+
+<section class="section-property section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Xem Nhiều Nhất</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href="@Url.Action("XemNhieuNhat", "BaiDang")">
+                            Xem Tất Cả
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="property-carousel" class="owl-carousel owl-theme">
+
+            @foreach (BaiDang baiDang in Model)
+            {
+                <div class="carousel-item-b">
+                    <div class="card-box-a card-shadow">
+                        <div class="/custom/img-box-a">
+                            <img src="@baiDang.anhdaidien" alt="" class="/custom/img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="@Url.Action("Index", "CTBaiDang", new { id = baiDang.mabaidang })">
+                                            @baiDang.vitri
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a">CHO THUÊ | @baiDang.giatien</span>
+                                    </div>
+                                    <a href="@Url.Action("Index", "CTBaiDang", new { id = baiDang.mabaidang })" class="link-a">
+                                        Nhấn vào đây để xem chi tiết
+                                        <span class="ion-ios-arrow-forward"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Diện Tích</h4>
+                                            <span>
+                                                @baiDang.dientich m
+                                                <sup>2</sup>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Phòng Ngủ</h4>
+                                            <span style="padding-left:40%;">@baiDang.phongngu</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Phòng Tắm</h4>
+                                            <span style="padding-left:40%;">@baiDang.phongtam</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Gara</h4>
+                                            <span style="padding-left:40%;">@baiDang.gara</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<section class="section-news section-t8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                    <div class="title-box">
+                        <h2 class="title-a">Bài Mới Đăng</h2>
+                    </div>
+                    <div class="title-link">
+                        <a href="@Url.Action("MoiDang", "BaiDang")">
+                            Xem Tất Cả
+                            <span class="ion-ios-arrow-forward"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="new-carousel" class="owl-carousel owl-theme">
+            @foreach (BaiDang baiDang in @ViewBag.MoiDang)
+            {
+                <div class="carousel-item-c">
+                    <div class="card-box-b card-shadow news-box">
+                        <div class="/custom/img-box-b">
+                            <img src="@baiDang.anhdaidien" alt="" class="/custom/img-b img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-header-b">
+                                <div class="card-category-b">
+                                    <a href="#" class="category-b">Cho Thuê</a>
+                                </div>
+                                <div class="card-title-b">
+                                    <h2 class="title-2">
+                                        <a href="blog-single.html">
+                                            @baiDang.vitri
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-b">@baiDang.ngaydang.ToString("dd-M-yyyy")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+
+    </div>
+</section>

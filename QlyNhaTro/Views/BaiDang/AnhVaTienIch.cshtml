@@ -1,0 +1,170 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script type="text/javascript">
+    function validateForm() {
+        var anhdaidien = document.forms["Form"]["anhdaidien"].value;
+        var anh = document.getElementsByName("anh");
+        var tienich = document.getElementsByName("tienich");
+        
+        
+        if (anhdaidien == "") {
+            alert("Vui lòng chọn ảnh đại diện cho bài đăng của bạn");
+            return false;
+        }
+
+        for (var i = 0; i < anh.length ; i++) {
+            if (anh[i].value == "") {
+                var count = i + 1;
+                alert("vị trí ảnh thứ " + count + " của bạn đang trống . vui lòng chọn ảnh mô tả cho vị trí này");
+                return false;
+            }
+        }
+
+        for (var i = 0; i < tienich.length; i++) {
+            if (tienich[i].value == "") {
+                var count = i + 1;
+                alert("Tiện ích thứ " + count + " của bạn đang trống . vui lòng điền tên tiện ích cho vị trí này");
+                return false;
+            }
+        }
+        
+
+    }
+</script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DangBai</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .note {
+            text-align: center;
+            height: 80px;
+            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            color: #fff;
+            font-weight: bold;
+            line-height: 80px;
+        }
+
+        .form-content {
+            padding: 5%;
+            border: 1px solid #ced4da;
+            margin-bottom: 2%;
+        }
+
+        .form-control {
+            border-radius: 1.5rem;
+        }
+
+        .btnSubmit {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1%;
+            width: 20%;
+            cursor: pointer;
+            background: #0062cc;
+            color: #fff;
+        }
+
+
+        .file-field.medium .file-path-wrapper {
+            height: 3rem;
+        }
+
+            .file-field.medium .file-path-wrapper .file-path {
+                height: 2.8rem;
+            }
+
+        .file-field.big-2 .file-path-wrapper {
+            height: 3.7rem;
+        }
+
+            .file-field.big-2 .file-path-wrapper .file-path {
+                height: 3.5rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <p>Thông Tin Bài Đăng</p>
+            </div>
+            <div class="form-content">
+                <form name="Form" action="@Url.Action("XacNhan","BaiDang")" method="post" onsubmit="return validateForm()">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <h5 style="margin-left:1%;">Chọn Ảnh Minh Họa Cho Bài Viết Của Bạn</h5>
+                        </div>
+                        <div class="col-md-8">
+                            <br />
+                            <div class="custom-file">
+
+                                <input type="file" class="custom-file-input" name="anhdaidien">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <br />
+                            <h5 style="margin-left:1%;">Chọn Ảnh Mô Tả Cho Bài Viết Của Bạn</h5>
+                        </div>
+
+                        @for (int i = 0; i < ViewBag.soanh; i++)
+                        {
+
+                            <div class="col-md-8">
+                                <br />
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="anh">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+
+                        }
+
+
+                        <div class="col-md-12">
+                            <br />
+                            <h5 style="margin-left:1%;">Chọn Những Tiện Ích Cho Bài Viết Của Bạn</h5>
+                        </div>
+                        <br />
+                        @for (int i = 0; i < ViewBag.sotienich; i++)
+                        {
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tên Tiện Ích" value="" name="tienich" />
+                                </div>
+
+                            </div>
+                        }
+                        <div class="col-md-10">
+                            <br />
+                            <button type="submit" class="btnSubmit" style="margin-left:50%;">Đăng Bài</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        $(".customFile").val(fileName);
+    });
+</script>
+
+
+

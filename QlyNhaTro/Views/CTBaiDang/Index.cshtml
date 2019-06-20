@@ -1,0 +1,253 @@
+﻿@{
+    ViewBag.Title = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using QlyNhaTro.Models
+@model ChiTietBaiDang
+
+<section class="intro-single">
+    <div class="container">
+
+    </div>
+</section>
+<!--/ Intro Single End /-->
+<!--/ Property Single Star /-->
+<section class="property-single nav-arrow-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+                    @foreach (AnhMoTa anhMoTa in ViewBag.DSAnhMoTa)
+                    {
+                        <div class="carousel-item-b">
+                            <img src="@anhMoTa.linkanh" alt="" width="1920px" height="600px">
+                        </div>
+                    }
+
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-md-5 col-lg-4">
+                        <div class="property-price d-flex justify-content-center foo">
+                            <div class="card-header-c d-flex">
+                                <div class="card-box-ico">
+                                    <span class="ion-money">@Model.giatien</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="property-summary">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="title-box-d section-t4">
+                                        <h3 class="title-d">Thông Tin Chính</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary-list">
+                                <ul class="list">
+
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Vị Trí:</strong>
+                                        <span>@Model.vitri</span>
+                                    </li>
+
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Trạng Thái:</strong>
+                                        @{
+
+                                            if (@Model.trangthai == 0)
+                                            {
+                                                <span>Cho Thuê</span>
+                                            }
+                                        }
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Diện Tích:</strong>
+                                        <span>
+                                            @Model.dientich
+                                            <sup>2</sup>
+                                        </span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Phòng Ngủ:</strong>
+                                        <span>@Model.phongngu</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Phòng Tắm:</strong>
+                                        <span>@Model.phongtam</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between">
+                                        <strong>Gara:</strong>
+                                        <span>@Model.gara</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 section-md-t3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Mô Tả Chung</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-description">
+                            <p class="description color-text-a">
+                                @Model.motachung
+                            </p>
+
+                        </div>
+                        <div class="row section-t3">
+                            <div class="col-sm-12">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Tiện Ích Có Sẵn</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="amenities-list color-text-a">
+                            <ul class="list-a no-margin">
+                                @foreach (TienIch tienIch in ViewBag.DSTienIch)
+                                {
+                                    <li>@tienIch.tentienich</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="title-box-d">
+                            <h3 class="title-d">Thông Tin Liên Hệ</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <img src="@ViewBag.TTTaiKhoan.anhdaidien" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="property-agent">
+                            <h4 class="title-agent">@ViewBag.TTTaiKhoan.ten</h4>
+                            <hr />
+                            <ul class="list-unstyled">
+                                <li class="d-flex justify-content-between">
+                                    <strong>Điện Thoại Bàn:</strong>
+                                    <span class="color-text-a">@ViewBag.TTTaiKhoan.dtban</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Điện Thoại Di Động:</strong>
+                                    <span class="color-text-a">@ViewBag.TTTaiKhoan.dtdidong</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Địa chỉ Email:</strong>
+                                    <span class="color-text-a">@ViewBag.TTTaiKhoan.email</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>Facebook:</strong>
+                                    <span class="color-text-a">@ViewBag.TTTaiKhoan.facebook</span>
+                                </li>
+                            </ul>
+                            <div class="socials-a">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="fa fa-dribbble" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="property-contact">
+                            <form class="form-a" action="@Url.Action("LuuTinNhan","CTBaiDang")" method="post">
+                                <div class="row">
+                                    <div class="col-md-12 mb-1">
+                                        <div class="form-group">
+                                            @if (@Session["TenTkCaNhan"] != null)
+                                            {
+                                                <input type="text" class="form-control form-control-lg form-control-a"  value="@Session["TenTkCaNhan"]"
+                                                       placeholder="Họ Và Tên *" >
+                                            }
+                                            else
+                                            {
+                                                <input type="text" class="form-control form-control-lg form-control-a" 
+                                                       placeholder="Họ Và Tên *" >
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-1">
+                                        @if (@Session["EmailTkCaNhan"] != null)
+                                        {
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-lg form-control-a"  value="@Session["EmailTkCaNhan"]"
+                                                       placeholder="Địa Chỉ Email *" >
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-lg form-control-a"  value="@Session["EmailTkCaNhan"]"
+                                                       placeholder="Địa Chỉ Email *" >
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="col-md-12 mb-1">
+                                        <div class="form-group">
+                                            @if (Session["user"] != null)
+                                            {
+                                                <textarea class="form-control" placeholder="Tin Nhắn *" name="tinnhan" cols="45"
+                                                          rows="8" required></textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea class="form-control" placeholder="Tin Nhắn *" name="tinnhan" cols="45"
+                                                          rows="8"></textarea>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-a" value="Gửi Tin Nhắn">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
