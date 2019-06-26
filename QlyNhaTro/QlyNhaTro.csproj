@@ -1919,6 +1919,7 @@
     <Content Include="Areas\Admin\Views\DangNhapAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DangKyAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKeTinNhan\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1928,11 +1929,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeTinNhanController.cs" />
     <Compile Include="Areas\Admin\Controllers\TrangChuAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DangNhapAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DangKyAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\Admin\Models\CTTinNhan.cs" />
     <Compile Include="Areas\Admin\Models\DSBaiDang.cs" />
+    <Compile Include="Areas\Admin\Models\TKTinNhan.cs" />
     <Compile Include="Areas\Admin\Models\XLThongKe.cs" />
     <Compile Include="Areas\ConectDB\DangKy.cs" />
     <Compile Include="Areas\ConectDB\ThongKe.cs" />

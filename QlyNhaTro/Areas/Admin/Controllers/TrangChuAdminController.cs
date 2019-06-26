@@ -14,10 +14,12 @@ namespace QlyNhaTro.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ThongKe thongKe = new ThongKe();
-            XLThongKe xLThongKe = thongKe.XuLyThongKe();
+            XLThongKe xLThongKe = thongKe.XuLyThongKe(Convert.ToInt32(Session["admin"]));
 
             Session["doanhsothang"] = xLThongKe.doanhsothang;
             Session["doanhsonam"] = xLThongKe.doanhsonam;
+            Session["kyvong"] = xLThongKe.kyvong;
+            Session["tongtinnhan"] = xLThongKe.tinnhan;
             return View();
         }
     }

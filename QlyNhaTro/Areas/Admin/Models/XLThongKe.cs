@@ -41,5 +41,22 @@ namespace QlyNhaTro.Areas.Admin.Models
 
             return doanhso;
         }
+
+        public int KyVong(List<DSBaiDang> dSBaiDangs)
+        {
+            int kyvongthuc = 0;
+
+            foreach (DSBaiDang dSBaiDang in dSBaiDangs)
+            {
+                if (Convert.ToInt32(DateTime.Now.ToString("yy")) - Convert.ToInt32(dSBaiDang.NgayDang.ToString("yy")) == 0)
+                {
+                    kyvongthuc = kyvongthuc + 1;
+                }
+            }
+
+            return (kyvongthuc*100/50);
+        }
+
+   
     }
 }

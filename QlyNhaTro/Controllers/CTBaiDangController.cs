@@ -55,7 +55,7 @@ namespace QlyNhaTro.Controllers
             }
             else
             {
-                return RedirectToAction("DangNhap", "Login");
+                return RedirectToAction("Index", "DangNhap");
             }
 
             return RedirectToAction("Index", "ThanhCong");
